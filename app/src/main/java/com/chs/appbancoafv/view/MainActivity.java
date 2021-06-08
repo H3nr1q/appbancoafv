@@ -1,23 +1,26 @@
 package com.chs.appbancoafv.view;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Toast;
 
 import com.chs.appbancoafv.R;
 import com.chs.appbancoafv.db.ProdutoDAO;
 import com.chs.appbancoafv.model.Produto;
+import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
-    private ListView listView;
-    private List<Produto> produtos = new ArrayList<>();
-    private List<Produto> produtosFiltrados = new ArrayList<>();
-    private ProdutoDAO produtoDAO;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +31,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void bindViews(){
-        listView = findViewById(R.id.lv_produtos);
-        produtoDAO = new ProdutoDAO();
-        produtos = produtoDAO.listaProduto();
-        produtosFiltrados.addAll(produtos);
-        ArrayAdapter<Produto> adapter = new ArrayAdapter<Produto>(this, android.R.layout.simple_expandable_list_item_1, produtosFiltrados);
-        listView.setAdapter(adapter);
-        registerForContextMenu(listView);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar,
+                R.string.open_drawer,
+                R.string.close_drawer);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = findViewById(R.id.navView);
+        navigationView.setNavigationItemSelectedListener(this);
 
     }
+
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_item_produto:{
+                Toast.makeText(this,"Você clicou no item produtos", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.nav_item_cliente:{
+                Toast.makeText(this,"Você clicou no item clientes", Toast.LENGTH_SHORT).show();
+                break;
+            }
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        super.onBackPressed();
+    }
 }
+

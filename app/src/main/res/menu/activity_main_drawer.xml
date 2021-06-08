@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/nav_item_produto"
+            android:icon="@drawable/ic_produtos_24"
+            android:title="@string/Produtos" />
+        <item android:id="@+id/nav_item_cliente"
+            android:icon="@drawable/ic_clientes_24"
+            android:title="@string/Clientes" />
+    </group>
+    <item android:title="@string/item_3" >
+        <menu>
+            <item android:id="@+id/nav_item_banco1"
+                android:title="@string/item_1" />
+            <item android:id="@+id/nav_item_banco2"
+                android:title="@string/item_1" />
+            <item android:id="@+id/navo_item_banco3"
+                android:title="@string/item_1"/>
+        </menu>
+    </item>
+</menu>

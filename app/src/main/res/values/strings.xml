@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">appbancoafv</string>
+    <string name="open_drawer">Abrir</string>
+    <string name="close_drawer">Fechar</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="item_1">Item 1</string>
+    <string name="item_2">Item 2</string>
+    <string name="item_3">Item 3</string>
+    <string name="item_4">Item 4</string>
+    <string name="item_5">Item 5</string>
+    <string name="item_6">Item 6</string>
+    <string name="item_7">Item 7</string>
+    <string name="item_8">Item 8</string>
+    <string name="Texto_1">Texto</string>
+    <string name="AFV">AFV</string>
+    <string name="Produtos">Produtos</string>
+    <string name="Clientes">Clientes</string>
 </resources>
