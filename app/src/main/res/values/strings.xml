@@ -17,6 +17,4 @@
     <string name="AFV">AFV</string>
     <string name="Produtos">Produtos</string>
     <string name="Clientes">Clientes</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment produtos</string>
 </resources>

@@ -52,8 +52,8 @@ public class ProdutoDAO extends DAO<Produto> {
         Cursor c = getReadableDB().rawQuery(sql, null);
         while (c.moveToNext()){
             Produto p = new Produto();
-            p.setPRO_CODIGO(c.getString(c.getColumnIndex("PRO_CODIGO")));
-            p.setPRO_DESCRICAO(c.getString(c.getColumnIndex("PRO_DESCRICAO")));
+            p.setCODIGO(c.getString(c.getColumnIndex("PRO_CODIGO")));
+            p.setDESCRICAO(c.getString(c.getColumnIndex("PRO_DESCRICAO")));
             produtos.add(p);
 
         }
