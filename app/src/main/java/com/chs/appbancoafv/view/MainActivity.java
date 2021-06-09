@@ -1,20 +1,18 @@
 package com.chs.appbancoafv.view;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.chs.appbancoafv.R;
-import com.chs.appbancoafv.db.ProdutoDAO;
-import com.chs.appbancoafv.model.Produto;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bindViews();
-
     }
 
     private void bindViews(){
@@ -50,13 +47,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
         switch (item.getItemId()){
             case R.id.nav_item_produto:{
                 Toast.makeText(this,"Você clicou no item produtos", Toast.LENGTH_SHORT).show();
+                ListaProdutosFragment fragment = new ListaProdutosFragment();
+                ft.replace(R.id.container, fragment, ListaProdutosFragment.class.getSimpleName());
+                ft.commit();
+//                ft.addToBackStack(null);
                 break;
             }
             case R.id.nav_item_cliente:{
                 Toast.makeText(this,"Você clicou no item clientes", Toast.LENGTH_SHORT).show();
+                ListaClientesFragment fragment = new ListaClientesFragment();
+                ft.replace(R.id.container, fragment, ListaClientesFragment.class.getSimpleName());
+                ft.commit();
+//                ft.addToBackStack(null);
                 break;
             }
         }
