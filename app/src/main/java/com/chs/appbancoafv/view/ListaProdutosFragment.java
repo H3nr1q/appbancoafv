@@ -34,6 +34,7 @@ public class ListaProdutosFragment extends Fragment {
 
 
     public ListaProdutosFragment() {
+        setHasOptionsMenu(true);
 
     }
 
@@ -46,11 +47,32 @@ public class ListaProdutosFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_busca_produto, menu);
+        SearchView sv = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String digitouTexto) {
+                produtos = ProdutoDAO.getInstance().posicionaProduto(digitouTexto);
+                produtosFiltrados.addAll(produtos);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                RecyclerAdapterProdutos adapterProdutos = new RecyclerAdapterProdutos(produtos);
+                recyclerView.setAdapter(adapterProdutos);
+                return false;
+            }
+        });
+    }
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.rvProdutos);
-        produtoDAO = new ProdutoDAO();
-        produtos = produtoDAO.listaProduto();
+        produtos = ProdutoDAO.getInstance().listaProduto();
         produtosFiltrados.addAll(produtos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         RecyclerAdapterProdutos adapterProdutos = new RecyclerAdapterProdutos(produtos);
@@ -64,6 +86,6 @@ public class ListaProdutosFragment extends Fragment {
         produtos = ProdutoDAO.getInstance().listaProduto();
         produtosFiltrados.clear();
         produtosFiltrados.addAll(produtos);
-        recyclerView.invalidate();
     }
+
 }
