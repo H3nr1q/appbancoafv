@@ -2,8 +2,11 @@ package com.chs.appbancoafv.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,12 +20,15 @@ import com.chs.appbancoafv.adapter.RecyclerAdapterProdutos;
 import com.chs.appbancoafv.db.ProdutoDAO;
 import com.chs.appbancoafv.model.Produto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ListaProdutosFragment extends Fragment {
-    private List<Produto> produtoList;
     private RecyclerView recyclerView;
+    private List<Produto> produtos = new ArrayList<>();
+    private List<Produto> produtosFiltrados = new ArrayList<>();
+    private ProdutoDAO produtoDAO;
 
 
 
@@ -43,8 +49,11 @@ public class ListaProdutosFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.rvProdutos);
+        produtoDAO = new ProdutoDAO();
+        produtos = produtoDAO.listaProduto();
+        produtosFiltrados.addAll(produtos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        RecyclerAdapterProdutos adapterProdutos = new RecyclerAdapterProdutos(produtoList);
+        RecyclerAdapterProdutos adapterProdutos = new RecyclerAdapterProdutos(produtos);
         recyclerView.setAdapter(adapterProdutos);
 
     }
@@ -52,6 +61,9 @@ public class ListaProdutosFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        produtoList = ProdutoDAO.getInstance().listaProduto();
+        produtos = ProdutoDAO.getInstance().listaProduto();
+        produtosFiltrados.clear();
+        produtosFiltrados.addAll(produtos);
+        recyclerView.invalidate();
     }
 }
