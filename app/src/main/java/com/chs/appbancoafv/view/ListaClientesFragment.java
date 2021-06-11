@@ -2,17 +2,35 @@ package com.chs.appbancoafv.view;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.chs.appbancoafv.R;
+import com.chs.appbancoafv.adapter.RecyclerAdapterClientes;
+import com.chs.appbancoafv.db.ClienteDAO;
+import com.chs.appbancoafv.model.Cliente;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListaClientesFragment extends Fragment {
-    public ListaClientesFragment() {
+    private RecyclerView recyclerView;
+    private List<Cliente> clientes = new ArrayList<>();
+    private List<Cliente> clientesFiltrados = new ArrayList<>();
 
+
+    public ListaClientesFragment() {
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -20,5 +38,46 @@ public class ListaClientesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lista_clientes, container, false);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_busca, menu);
+        SearchView sv = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String digitouTexto) {
+                clientes = ClienteDAO.getInstance().buscaCliente(digitouTexto);
+                clientesFiltrados.addAll(clientes);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                RecyclerAdapterClientes adapterClientes = new RecyclerAdapterClientes(clientes);
+                recyclerView.setAdapter(adapterClientes);
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        recyclerView = view.findViewById(R.id.rvClientes);
+        clientes = ClienteDAO.getInstance().listaClienteCard();
+        clientesFiltrados.addAll(clientes);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        RecyclerAdapterClientes adapterClientes = new RecyclerAdapterClientes(clientes);
+        recyclerView.setAdapter(adapterClientes);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        clientes = ClienteDAO.getInstance().listaClienteCard();
+        clientesFiltrados.clear();
+        clientesFiltrados.addAll(clientes);
     }
 }

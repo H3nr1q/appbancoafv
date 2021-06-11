@@ -17,4 +17,9 @@
     <string name="AFV">AFV</string>
     <string name="Produtos">Produtos</string>
     <string name="Clientes">Clientes</string>
+    <string name="codigo">Codigo</string>
+    <string name="razao_social_cliente">RAZAO SOCIAL CLIENTE</string>
+    <string name="fantasia_do_cliente">FANTASIA DO CLIENTE</string>
+    <string name="cnpjcpf">CNPJCPF</string>
+
 </resources>
