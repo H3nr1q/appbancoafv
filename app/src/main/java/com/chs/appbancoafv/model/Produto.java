@@ -10,6 +10,9 @@ public class Produto implements Parcelable {
     private String VRMAX;
     private String VRMIN;
     private String ESTOQUE;
+    private String tabela;
+    private String preco;
+    private String embalagem;
 
     public Produto() {
 
@@ -75,6 +78,30 @@ public class Produto implements Parcelable {
         this.ESTOQUE = ESTOQUE;
     }
 
+    public String getTabela() {
+        return tabela;
+    }
+
+    public void setTabela(String tabela) {
+        this.tabela = tabela;
+    }
+
+    public String getPreco() {
+        return preco;
+    }
+
+    public void setPreco(String preco) {
+        this.preco = preco;
+    }
+
+    public String getEmbalagem() {
+        return embalagem;
+    }
+
+    public void setEmbalagem(String embalagem) {
+        this.embalagem = embalagem;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -88,6 +115,9 @@ public class Produto implements Parcelable {
         dest.writeString(VRMAX);
         dest.writeString(VRMIN);
         dest.writeString(ESTOQUE);
+        dest.writeString(tabela);
+        dest.writeString(preco);
+        dest.writeString(embalagem);
     }
 
     @Override

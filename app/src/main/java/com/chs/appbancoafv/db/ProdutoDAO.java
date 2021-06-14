@@ -120,4 +120,28 @@ public class ProdutoDAO extends DAO<Produto> {
 
     }
 
+
+    public List<Produto> listaPrecosProduto(String codigoProduto){
+        List<Produto> produtos = new ArrayList<>();
+        String sql = "SELECT " +
+                "PRC_DESCRICAO, " +
+                "CAST(PRP_PRECOS AS REAL(6,4)) AS PRP_PRECO, " +
+                "PRP_UNIVENDA " +
+                "FROM GUA_PRECOS " +
+                "INNER JOIN GUA_CABTABPRECO ON (PRC_CODIGO = PRP_TABELAPRECO)" +
+                "WHERE PRP_CODIGO = "+ "'"+ codigoProduto + "' " +
+                "ORDER BY PRP_PRECOS ASC; ";
+
+        Cursor c = getReadableDB().rawQuery(sql, null);
+
+        while (c.moveToNext()){
+            Produto p = new Produto();
+            p.setTabela(c.getString(c.getColumnIndex("PRC_DESCRICAO")));
+            p.setPreco(c.getString(c.getColumnIndex("PRP_PRECO")));
+            p.setEmbalagem(c.getString(c.getColumnIndex("PRP_UNIVENDA")));
+        }
+        c.close();
+        return produtos;
+    }
+
 }

@@ -2,14 +2,15 @@ package com.chs.appbancoafv.presenter;
 
 import com.chs.appbancoafv.db.ProdutoDAO;
 import com.chs.appbancoafv.model.Produto;
+import com.chs.appbancoafv.view.DialogPrecos;
 
 import java.util.List;
 
-public class ListaPresenter {
+public class ListaPresenterProdutos {
     private ProdutoView produtoView;
     private List<Produto> produtos;
 
-    public ListaPresenter(ProdutoView view){
+    public ListaPresenterProdutos(ProdutoView view){
         produtoView = view;
     }
 
@@ -17,6 +18,12 @@ public class ListaPresenter {
         produtos = ProdutoDAO.getInstance().listaProduto();
         produtoView.refreshList(produtos);
     }
+
+    public void posicionaProduto(String digitouTexto){
+        produtos = ProdutoDAO.getInstance().posicionaProduto(digitouTexto);
+        produtoView.refreshList(produtos);
+    }
+
 
 
     public interface ProdutoView {

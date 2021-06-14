@@ -3,10 +3,8 @@ package com.chs.appbancoafv.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chs.appbancoafv.R;
@@ -16,6 +14,15 @@ import java.util.List;
 
 public class RecyclerAdapterProdutos extends RecyclerView.Adapter<RecyclerAdapterProdutos.ProdutoViewHolder> {
     private List<Produto> produtoList;
+    private OnClickProduto onClickProduto;
+
+    public OnClickProduto getOnClickProduto() {
+        return onClickProduto;
+    }
+
+    public void setOnClickProduto(OnClickProduto onClickProduto) {
+        this.onClickProduto = onClickProduto;
+    }
 
     public RecyclerAdapterProdutos(List<Produto> produtoList) {
         this.produtoList = produtoList;
@@ -36,6 +43,13 @@ public class RecyclerAdapterProdutos extends RecyclerView.Adapter<RecyclerAdapte
         holder.proLegenda.setText(produto.getLEGENDA());
         holder.proVrMin.setText(produto.getVRMIN());
         holder.proVrMax.setText(produto.getVRMAX());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickProduto.setOnProdutoListener(position, produtoList.get(position));
+
+            }
+        });
 
     }
 
@@ -63,5 +77,10 @@ public class RecyclerAdapterProdutos extends RecyclerView.Adapter<RecyclerAdapte
             proVrMax = itemView.findViewById(R.id.txtSetVrMax);
             proVrMin = itemView.findViewById(R.id.txtSetVrMin);
         }
+    }
+
+
+    public interface OnClickProduto{
+        void setOnProdutoListener(int position, Produto produto);
     }
 }
