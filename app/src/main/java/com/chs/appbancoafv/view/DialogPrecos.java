@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -68,6 +69,7 @@ public class DialogPrecos extends DialogFragment {
 
         adapterPrecos = new RecyclerDialogPrecos(listaPrecosProdutos);
         recyclerView.setAdapter(adapterPrecos);
+        ((TextView)mView.findViewById(R.id.textoPrecos)).setText(codigoProduto);
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
 

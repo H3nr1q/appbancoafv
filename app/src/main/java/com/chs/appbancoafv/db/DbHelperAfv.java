@@ -10,7 +10,7 @@ import com.chs.appbancoafv.utils.AppBancoAfv;
 import java.io.IOException;
 
 public class DbHelperAfv extends SQLiteOpenHelper {
-    private static String DB_PATH = "/Android/data/br.com.guaranisistemas.afv/files/Ferraz/Guarani/Banco/";
+    private static String DB_PATH = "/data/data/com.chs.appbancoafv/files/Ferraz/Guarani/Banco/";
 
     private static String DB_NAME = "bancomovel";
 
