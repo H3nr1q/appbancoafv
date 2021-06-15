@@ -21,6 +21,6 @@
     <string name="razao_social_cliente">RAZAO SOCIAL CLIENTE</string>
     <string name="fantasia_do_cliente">FANTASIA DO CLIENTE</string>
     <string name="cnpjcpf">CNPJCPF</string>
-    <string name="precos">"Preços Produto : "</string>
+    <string name="precos">"Preços"</string>
 
 </resources>

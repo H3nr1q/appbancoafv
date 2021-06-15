@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Produto implements Parcelable {
-    private String CODIGO;
-    private String DESCRICAO;
-    private String LEGENDA;
-    private String VRMAX;
-    private String VRMIN;
-    private String ESTOQUE;
+    private String codigo;
+    private String descricao;
+    private String legenda;
+    private String vrmax;
+    private String vrmin;
+    private String estoque;
     private String tabela;
     private String preco;
     private String embalagem;
@@ -30,52 +30,52 @@ public class Produto implements Parcelable {
         }
     };
 
-    public String getCODIGO() {
-        return CODIGO;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setCODIGO(String CODIGO) {
-        this.CODIGO = CODIGO;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public String getDESCRICAO() {
-        return DESCRICAO;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDESCRICAO(String DESCRICAO) {
-        this.DESCRICAO = DESCRICAO;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getLEGENDA() {
-        return LEGENDA;
+    public String getLegenda() {
+        return legenda;
     }
 
-    public void setLEGENDA(String LEGENDA) {
-        this.LEGENDA = LEGENDA;
+    public void setLegenda(String legenda) {
+        this.legenda = legenda;
     }
 
-    public String getVRMAX() {
-        return VRMAX;
+    public String getVrmax() {
+        return vrmax;
     }
 
-    public void setVRMAX(String VRMAX) {
-        this.VRMAX = VRMAX;
+    public void setVrmax(String vrmax) {
+        this.vrmax = vrmax;
     }
 
-    public String getVRMIN() {
-        return VRMIN;
+    public String getVrmin() {
+        return vrmin;
     }
 
-    public void setVRMIN(String VRMIN) {
-        this.VRMIN = VRMIN;
+    public void setVrmin(String vrmin) {
+        this.vrmin = vrmin;
     }
 
-    public String getESTOQUE() {
-        return ESTOQUE;
+    public String getEstoque() {
+        return estoque;
     }
 
-    public void setESTOQUE(String ESTOQUE) {
-        this.ESTOQUE = ESTOQUE;
+    public void setEstoque(String estoque) {
+        this.estoque = estoque;
     }
 
     public String getTabela() {
@@ -109,12 +109,12 @@ public class Produto implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(CODIGO);
-        dest.writeString(DESCRICAO);
-        dest.writeString(LEGENDA);
-        dest.writeString(VRMAX);
-        dest.writeString(VRMIN);
-        dest.writeString(ESTOQUE);
+        dest.writeString(codigo);
+        dest.writeString(descricao);
+        dest.writeString(legenda);
+        dest.writeString(vrmax);
+        dest.writeString(vrmin);
+        dest.writeString(estoque);
         dest.writeString(tabela);
         dest.writeString(preco);
         dest.writeString(embalagem);
@@ -123,6 +123,6 @@ public class Produto implements Parcelable {
     @Override
     public String toString() {
 
-        return CODIGO;
+        return codigo;
     }
 }

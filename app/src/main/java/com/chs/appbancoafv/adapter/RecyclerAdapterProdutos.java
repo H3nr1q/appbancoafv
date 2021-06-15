@@ -37,12 +37,12 @@ public class RecyclerAdapterProdutos extends RecyclerView.Adapter<RecyclerAdapte
     @Override
     public void onBindViewHolder(ProdutoViewHolder holder, int position) {
         Produto produto = produtoList.get(position);
-        holder.proCodigo.setText(produto.getCODIGO());
-        holder.proDescricao.setText(produto.getDESCRICAO());
-        holder.proEstoque.setText(produto.getESTOQUE());
-        holder.proLegenda.setText(produto.getLEGENDA());
-        holder.proVrMin.setText(produto.getVRMIN());
-        holder.proVrMax.setText(produto.getVRMAX());
+        holder.proCodigo.setText(produto.getCodigo());
+        holder.proDescricao.setText(produto.getDescricao());
+        holder.proEstoque.setText(produto.getEstoque());
+        holder.proLegenda.setText(produto.getLegenda());
+        holder.proVrMin.setText(produto.getVrmin());
+        holder.proVrMax.setText(produto.getVrmax());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

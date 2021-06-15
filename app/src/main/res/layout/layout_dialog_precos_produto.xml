@@ -7,73 +7,74 @@
 
     <TextView
         android:id="@+id/txtNomeTabela"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:text="Tabela"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtSetNomeTabela"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtSetNomeTabela"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="Nome Tabela"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtEmb"
         app:layout_constraintStart_toEndOf="@+id/txtNomeTabela"
         app:layout_constraintTop_toTopOf="@+id/txtNomeTabela" />
 
     <TextView
         android:id="@+id/txtPreco"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:text="Preço"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtSetPreco"
         app:layout_constraintStart_toEndOf="@+id/txtSetEmbalagem"
         app:layout_constraintTop_toTopOf="@+id/txtSetEmbalagem" />
 
     <TextView
         android:id="@+id/txtSetPreco"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="0.00"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtPreco"
         app:layout_constraintTop_toTopOf="@+id/txtPreco" />
 
     <TextView
         android:id="@+id/txtEmb"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:text="Emb"
-        android:textStyle="bold"
         android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtSetEmbalagem"
         app:layout_constraintStart_toEndOf="@+id/txtSetNomeTabela"
         app:layout_constraintTop_toTopOf="@+id/txtSetNomeTabela" />
 
     <TextView
         android:id="@+id/txtSetEmbalagem"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="CX/150"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtPreco"
         app:layout_constraintStart_toEndOf="@+id/txtEmb"
         app:layout_constraintTop_toTopOf="@+id/txtEmb" />
 </androidx.constraintlayout.widget.ConstraintLayout>
