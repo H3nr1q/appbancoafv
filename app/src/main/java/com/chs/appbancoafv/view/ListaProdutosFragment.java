@@ -79,6 +79,15 @@ public class ListaProdutosFragment extends Fragment implements ListaPresenterPro
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        recyclerView = view.findViewById(R.id.rvProdutos);
+        listaPresenterProdutos = new ListaPresenterProdutos(this);
+        listaPresenterProdutos.listarProdutos();
+        populaListaRecycler();
+//        produtosFiltrados.addAll(produtos);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        adapterProdutos = new RecyclerAdapterProdutos(produtos);
+//        recyclerView.setAdapter(adapterProdutos);
+//        adapterProdutos.setOnClickProduto(this);
 
         tabLayout = view.findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Todos"));
@@ -87,14 +96,44 @@ public class ListaProdutosFragment extends Fragment implements ListaPresenterPro
         tabLayout.addTab(tabLayout.newTab().setText("P.Estoque"));
         tabLayout.addTab(tabLayout.newTab().setText("Lancamento"));
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                produtos = ProdutoDAO.getInstance().buscaProdutoStatus("P");
-                produtosFiltrados.addAll(produtos);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                adapterProdutos = new RecyclerAdapterProdutos(produtos);
-                recyclerView.setAdapter(adapterProdutos);
+                switch (tab.getPosition()){
+                    case 0: {
+//                        produtos = ProdutoDAO.getInstance().listaProduto();
+                        listaPresenterProdutos.listarProdutos();
+                        break;
+
+                    }
+                    case 1: {
+                        listaPresenterProdutos.buscarStatus("N");
+//                        produtos = ProdutoDAO.getInstance().buscaProdutoStatus("N");
+                        break;
+
+                    }
+                    case 2:{
+                        listaPresenterProdutos.buscarStatus("R");
+//                        produtos = ProdutoDAO.getInstance().buscaProdutoStatus("R");
+                        break;
+
+                    }
+                    case 3: {
+                        listaPresenterProdutos.buscarStatus("P");
+//                        produtos = ProdutoDAO.getInstance().buscaProdutoStatus("P");
+                        break;
+                    }
+                    case 4:{
+                        listaPresenterProdutos.buscarStatus("L");
+//                        produtos = ProdutoDAO.getInstance().buscaProdutoStatus("L");
+                        break;
+                    }
+
+                }
+
+                populaListaRecycler();
+
+
             }
 
             @Override
@@ -106,20 +145,24 @@ public class ListaProdutosFragment extends Fragment implements ListaPresenterPro
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-        }) ;
 
-        recyclerView = view.findViewById(R.id.rvProdutos);
 
-//        produtos = ProdutoDAO.getInstance().listaProduto();
-        listaPresenterProdutos = new ListaPresenterProdutos(this);
-        listaPresenterProdutos.listarProdutos();
+        });
+
+
+    }
+
+    public void populaListaRecycler(){
         produtosFiltrados.addAll(produtos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapterProdutos = new RecyclerAdapterProdutos(produtos);
         recyclerView.setAdapter(adapterProdutos);
         adapterProdutos.setOnClickProduto(this);
 
+
     }
+
+
 
     @Override
     public void onResume() {

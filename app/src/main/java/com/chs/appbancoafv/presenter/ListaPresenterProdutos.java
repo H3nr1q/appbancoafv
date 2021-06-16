@@ -24,6 +24,11 @@ public class ListaPresenterProdutos {
         produtoView.refreshList(produtos);
     }
 
+    public void buscarStatus(String status){
+        produtos = ProdutoDAO.getInstance().buscaProdutoStatus(status);
+        produtoView.refreshList(produtos);
+    }
+
 
 
     public interface ProdutoView {
