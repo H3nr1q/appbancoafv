@@ -3,6 +3,9 @@ package com.chs.appbancoafv.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Cliente implements Parcelable {
     private String codigo;
     private String razao;
@@ -215,5 +218,9 @@ public class Cliente implements Parcelable {
     @Override
     public String toString() {
         return codigo;
+    }
+
+    public static String generateId(){
+        return new SimpleDateFormat("yyMMddHHmmssSSS").format(new Date());
     }
 }

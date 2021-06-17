@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <RadioButton
+        android:id="@+id/radioBtPessoaJuridica"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:tag="J"
+        android:text="Juridica"
+        app:layout_constraintEnd_toStartOf="@+id/radioBtPessoaFisica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/radioBtPessoaFisica"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:tag="F"
+        android:text="Fisica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioBtPessoaJuridica"
+        app:layout_constraintTop_toTopOf="@+id/radioBtPessoaJuridica" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputCgccpf"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/radioBtPessoaFisica"
+        app:layout_constraintStart_toStartOf="@+id/radioBtPessoaJuridica"
+        app:layout_constraintTop_toBottomOf="@+id/radioBtPessoaJuridica">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtEditCgccpf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="CNPJ"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

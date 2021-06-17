@@ -11,7 +11,7 @@ import com.chs.appbancoafv.view.CadastroClienteBasicoFragment;
 import com.chs.appbancoafv.view.CadastroClienteEnderecosFragment;
 
 public class CadClientePageAdapter extends FragmentStatePagerAdapter {
-    private static final int NUM_PAGES = 4;
+    private static final int NUM_PAGES = 2;
 
     public CadClientePageAdapter(FragmentManager fm) {
         super(fm);
@@ -46,7 +46,8 @@ public class CadClientePageAdapter extends FragmentStatePagerAdapter {
             case 0: title = "DADOS";break;
             case 1: title = "ENDEREÇO";break;
             default:
-                throw new IllegalStateException("Unexpected value: " + position);
+//                throw new IllegalStateException("Unexpected value: " + position);
+                return  null;
         }
         return title;
     }

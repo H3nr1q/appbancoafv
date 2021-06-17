@@ -34,8 +34,6 @@ public class CadastroClienteActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         viewPager = findViewById(R.id.container);
         tabLayout = findViewById(R.id.tabCadClientes);
-//        tabLayout.addTab(tabLayout.newTab().setText("Dados Básicos"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Endereços"));
         tabLayout.setupWithViewPager(viewPager);
         pageAdapter = new CadClientePageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pageAdapter);

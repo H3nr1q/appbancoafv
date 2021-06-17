@@ -80,8 +80,9 @@ public class ListaClientesFragment extends Fragment {
         fabCadCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), CadastroClienteActivity.class);
-                startActivity(i);
+                DialogNewCliente dialogNewCliente = DialogNewCliente.newInstance();
+                dialogNewCliente.show(getActivity().getSupportFragmentManager(), null);
+
             }
         });
     }

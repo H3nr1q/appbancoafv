@@ -17,7 +17,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/purple_500"
         app:tabTextColor="@color/white"
-        app:tabIndicatorColor="@color/teal_200">
+        app:tabIndicatorColor="@color/teal_200"
+        app:tabMode="scrollable">
 
     </com.google.android.material.tabs.TabLayout>
 
