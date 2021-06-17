@@ -1,5 +1,6 @@
 package com.chs.appbancoafv.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.chs.appbancoafv.R;
 import com.chs.appbancoafv.adapter.RecyclerAdapterClientes;
 import com.chs.appbancoafv.db.ClienteDAO;
 import com.chs.appbancoafv.model.Cliente;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class ListaClientesFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<Cliente> clientes = new ArrayList<>();
     private List<Cliente> clientesFiltrados = new ArrayList<>();
+    private FloatingActionButton fabCadCliente;
 
 
     public ListaClientesFragment() {
@@ -38,6 +41,7 @@ public class ListaClientesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lista_clientes, container, false);
+
     }
 
     @Override
@@ -71,6 +75,15 @@ public class ListaClientesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         RecyclerAdapterClientes adapterClientes = new RecyclerAdapterClientes(clientes);
         recyclerView.setAdapter(adapterClientes);
+
+        fabCadCliente = view.findViewById(R.id.fab);
+        fabCadCliente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), CadastroClienteActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

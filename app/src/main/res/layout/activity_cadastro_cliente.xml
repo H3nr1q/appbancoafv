@@ -17,6 +17,7 @@
         app:liftOnScroll="true">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarCliente"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
@@ -24,10 +25,10 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavitor="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
