@@ -27,6 +27,12 @@ public class CadastroClienteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_cliente);
+        bindViews();
+
+
+    }
+
+    private void bindViews(){
         appBarLayout = findViewById(R.id.appBarLayout);
         toolbar = findViewById(R.id.toolbarCliente);
         setSupportActionBar(toolbar);
@@ -37,7 +43,6 @@ public class CadastroClienteActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         pageAdapter = new CadClientePageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pageAdapter);
-
-
     }
+
 }

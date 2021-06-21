@@ -5,11 +5,13 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -76,27 +78,53 @@ public class DialogNewCliente extends DialogFragment implements View.OnClickList
         dialogbuilder.setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(getActivity(), CadastroClienteActivity.class);
 
-                if(radioButtonJuridico.isChecked()){
-                    intent.putExtra("tipoPessoa", radioButtonJuridico.getTag().toString());
-                    intent.putExtra("cgccpf", textInputLayoutCgccpf.getEditText().getText().toString());
-                }else if (radioButtonFisico.isChecked()){
-                    intent.putExtra("tipoPessoa", radioButtonFisico.getTag().toString());
-                    intent.putExtra("cgccpf", textInputLayoutCgccpf.getEditText().getText().toString());
-                }
-                Cliente cliente = new Cliente();
-                cliente.setCodigo(cliente.generateId());
-                intent.putExtra("codigo", cliente.generateId());
-                startActivity(intent);
+                   Intent intent = new Intent(getActivity(), CadastroClienteActivity.class);
+                    if (radioButtonJuridico.isChecked()) {
+                        intent.putExtra("tipoPessoa", radioButtonJuridico.getTag().toString());
+                        intent.putExtra("cgccpf", textInputLayoutCgccpf.getEditText().getText().toString());
+                    } else if (radioButtonFisico.isChecked()) {
+                        intent.putExtra("tipoPessoa", radioButtonFisico.getTag().toString());
+                        intent.putExtra("cgccpf", textInputLayoutCgccpf.getEditText().getText().toString());
+                    }
+                    Cliente cliente = new Cliente();
+                    cliente.setCodigo(cliente.generateId());
+                    intent.putExtra("codigo", cliente.generateId());
+                    startActivity(intent);
+
             }
         });
 
-        return dialogbuilder.create();
+        AlertDialog alertDialog = dialogbuilder.create();
 
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                textInputLayoutCgccpf.getEditText().addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+                    }
 
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        if(!StringUtils.isNullOrEmpty(s.toString())){
+                            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                        }else{
+                            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                        }
+                    }
+                });
+            }
+        });
+
+        return alertDialog;
 
     }
 
