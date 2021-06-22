@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.chs.appbancoafv.R;
 import com.chs.appbancoafv.adapter.CadClientePageAdapter;
+import com.chs.appbancoafv.model.Cliente;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
@@ -22,12 +24,19 @@ public class CadastroClienteActivity extends AppCompatActivity {
     ViewPager viewPager;
     CadClientePageAdapter pageAdapter;
     TabLayout tabLayout;
+    private static final String EXTRA_CLIENTE = "cliente";
+    String tipoPessoa, cgccpf;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_cliente);
         bindViews();
+        Intent intent = getIntent();
+        tipoPessoa = intent.getStringExtra("tipoPessoa");
+        cgccpf = intent.getStringExtra("cgccpf");
+        toolbar.setTitle("Novo cliente - "+cgccpf);
 
 
     }
