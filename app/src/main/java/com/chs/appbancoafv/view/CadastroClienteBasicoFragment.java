@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chs.appbancoafv.R;
+import com.chs.appbancoafv.model.Cliente;
 import com.google.android.material.textfield.TextInputLayout;
 
 
@@ -23,16 +24,18 @@ public class CadastroClienteBasicoFragment extends Fragment {
     TextInputLayout emailPrincipal;
     TextInputLayout emailSecundario;
     String tipoPessoa;
+    private Cliente cliente;
 
     public CadastroClienteBasicoFragment() {
         // Required empty public constructor
     }
 
-    public static CadastroClienteBasicoFragment newInstance(String param1, String param2) {
+    public static CadastroClienteBasicoFragment newInstance(Cliente cliente) {
         CadastroClienteBasicoFragment fragment = new CadastroClienteBasicoFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
+
     }
 
     @Override
@@ -41,8 +44,11 @@ public class CadastroClienteBasicoFragment extends Fragment {
         if (getArguments() != null) {
 
         }
-        Intent intent = new Intent();
-        tipoPessoa = intent.getStringExtra("tipoPessoa");
+        Bundle args = new Bundle();
+        args.putString("tipoPessoa", tipoPessoa);
+        setArguments(args);
+
+        tipoPessoa = getArguments().getString("tipoPessoa");
     }
 
     @Override
