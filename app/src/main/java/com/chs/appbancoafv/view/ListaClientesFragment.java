@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.chs.appbancoafv.R;
 import com.chs.appbancoafv.adapter.RecyclerAdapterClientes;
@@ -81,6 +82,19 @@ public class ListaClientesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DialogNewCliente dialogNewCliente = DialogNewCliente.newInstance();
+
+                /* 3 - Seta o ouvinte que irá escutar o dialog */
+                dialogNewCliente.setOnCriarNovoClienteListener(new DialogNewCliente.OnCriarNovoClienteListener() {
+                    @Override
+                    public void onCriarNovoCliente(Cliente cliente) {
+                        Toast.makeText(
+                                requireContext(),
+                                "TIPO PESSOA SELECIONADO: " + cliente.getTipoPessoa() ,
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                });
+
                 dialogNewCliente.show(getActivity().getSupportFragmentManager(), null);
 
             }
