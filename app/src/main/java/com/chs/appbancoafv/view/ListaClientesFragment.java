@@ -87,11 +87,9 @@ public class ListaClientesFragment extends Fragment {
                 dialogNewCliente.setOnCriarNovoClienteListener(new DialogNewCliente.OnCriarNovoClienteListener() {
                     @Override
                     public void onCriarNovoCliente(Cliente cliente) {
-                        Toast.makeText(
-                                requireContext(),
-                                "TIPO PESSOA SELECIONADO: " + cliente.getTipoPessoa() ,
-                                Toast.LENGTH_SHORT
-                        ).show();
+                        Intent intent = new Intent(requireContext(), CadastroClienteActivity.class);
+                        intent.putExtra(CadastroClienteActivity.EXTRA_CLIENTE, cliente);
+                        startActivity(intent);
                     }
                 });
 

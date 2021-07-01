@@ -33,7 +33,26 @@ public class Cliente implements Parcelable {
     public static final Creator<Cliente> CREATOR = new Creator<Cliente>() {
         @Override
         public Cliente createFromParcel(Parcel in) {
-            return new Cliente();
+            Cliente cliente = new Cliente();
+            cliente.setCodigo(in.readString());
+            cliente.setRazao(in.readString());
+            cliente.setFantasia(in.readString());
+            cliente.setCgccpf(in.readString());
+            cliente.setEndereco(in.readString());
+            cliente.setNumero(in.readString());
+            cliente.setComplemento(in.readString());
+            cliente.setBairro(in.readString());
+            cliente.setCodMunicipio(in.readString());
+            cliente.setTelefone(in.readString());
+            cliente.setEnderecoEntrega(in.readString());
+            cliente.setNumeroEntrega(in.readString());
+            cliente.setComplementoEntrega(in.readString());
+            cliente.setBairroEntrega(in.readString());
+            cliente.setCodMunicipioEntrega(in.readString());
+            cliente.setEmail(in.readString());
+            cliente.setEmailNf(in.readString());
+            cliente.setTipoPessoa(in.readString());
+            return cliente;
         }
 
         @Override

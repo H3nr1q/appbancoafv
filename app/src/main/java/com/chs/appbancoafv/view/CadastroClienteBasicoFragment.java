@@ -10,10 +10,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.chs.appbancoafv.R;
 import com.chs.appbancoafv.model.Cliente;
 import com.google.android.material.textfield.TextInputLayout;
+
+import static com.chs.appbancoafv.view.CadastroClienteActivity.EXTRA_CLIENTE;
 
 
 public class CadastroClienteBasicoFragment extends Fragment {
@@ -48,7 +51,10 @@ public class CadastroClienteBasicoFragment extends Fragment {
         args.putString("tipoPessoa", tipoPessoa);
         setArguments(args);
 
-        tipoPessoa = getArguments().getString("tipoPessoa");
+//        tipoPessoa = getArguments().getString("tipoPessoa");
+
+        cliente = requireActivity().getIntent().getParcelableExtra(EXTRA_CLIENTE);
+        tipoPessoa = cliente.getTipoPessoa();
     }
 
     @Override
@@ -65,7 +71,7 @@ public class CadastroClienteBasicoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bindViews(view);
 
-
+        Toast.makeText(requireContext(), "TIPO PESSOA: " + tipoPessoa, Toast.LENGTH_LONG).show();
     }
 
     public void bindViews(View view){

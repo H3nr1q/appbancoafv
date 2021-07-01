@@ -24,8 +24,9 @@ public class CadastroClienteActivity extends AppCompatActivity {
     ViewPager viewPager;
     CadClientePageAdapter pageAdapter;
     TabLayout tabLayout;
-    private static final String EXTRA_CLIENTE = "cliente";
+    static final String EXTRA_CLIENTE = "cliente";
     String tipoPessoa, cgccpf;
+    private Cliente cliente;
 
 
     @Override
@@ -33,12 +34,15 @@ public class CadastroClienteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_cliente);
         bindViews();
-        Intent intent = getIntent();
-        tipoPessoa = intent.getStringExtra("tipoPessoa");
-        cgccpf = intent.getStringExtra("cgccpf");
+//        Intent intent = getIntent();
+//        tipoPessoa = intent.getStringExtra("tipoPessoa");
+//        cgccpf = intent.getStringExtra("cgccpf");
+//        toolbar.setTitle("Novo cliente - "+cgccpf);
+
+        cliente = getIntent().getParcelableExtra(EXTRA_CLIENTE);
+        tipoPessoa = cliente.getTipoPessoa();
+        cgccpf = cliente.getCgccpf();
         toolbar.setTitle("Novo cliente - "+cgccpf);
-
-
     }
 
     private void bindViews(){
