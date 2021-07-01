@@ -92,7 +92,7 @@ public class DialogNewCliente extends DialogFragment implements View.OnClickList
 //                    Cliente cliente = new Cliente();
 //                    cliente.setCodigo(cliente.generateId());
 //                    intent.putExtra("codigo", cliente.generateId());
-//                    startActivity(intent);
+
 
                 Cliente cliente = new Cliente();
                 cliente.setCodigo(cliente.generateId());
@@ -105,6 +105,7 @@ public class DialogNewCliente extends DialogFragment implements View.OnClickList
                 * configuração esta que foi feita no passo "3" */
                 criarNovoClienteListener.onCriarNovoCliente(cliente);
 
+//                startActivity(intent);
             }
         });
 

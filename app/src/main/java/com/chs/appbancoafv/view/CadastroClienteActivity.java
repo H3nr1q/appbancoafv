@@ -18,7 +18,7 @@ import com.chs.appbancoafv.model.Cliente;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
-public class CadastroClienteActivity extends AppCompatActivity {
+public class CadastroClienteActivity extends AppCompatActivity{
     AppBarLayout appBarLayout;
     Toolbar toolbar;
     ViewPager viewPager;
@@ -28,11 +28,13 @@ public class CadastroClienteActivity extends AppCompatActivity {
     String tipoPessoa, cgccpf;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_cliente);
         bindViews();
+
         Intent intent = getIntent();
         tipoPessoa = intent.getStringExtra("tipoPessoa");
         cgccpf = intent.getStringExtra("cgccpf");
@@ -45,6 +47,7 @@ public class CadastroClienteActivity extends AppCompatActivity {
         appBarLayout = findViewById(R.id.appBarLayout);
         toolbar = findViewById(R.id.toolbarCliente);
         setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         viewPager = findViewById(R.id.container);

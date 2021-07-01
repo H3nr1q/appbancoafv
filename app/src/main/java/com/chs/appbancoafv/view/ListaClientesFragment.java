@@ -92,6 +92,11 @@ public class ListaClientesFragment extends Fragment {
                                 "TIPO PESSOA SELECIONADO: " + cliente.getTipoPessoa() ,
                                 Toast.LENGTH_SHORT
                         ).show();
+
+                        Intent intent = new Intent(getActivity(), CadastroClienteActivity.class);
+                        intent.putExtra("tipoPessoa",cliente.getTipoPessoa());
+                        intent.putExtra("cgccpf", cliente.getCgccpf());
+                        startActivity(intent);
                     }
                 });
 
