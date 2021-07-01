@@ -60,7 +60,7 @@ public class DbHelperAfv extends SQLiteOpenHelper {
 //    }
 
     public DbHelperAfv() {
-        super(AppBancoAfv.getInstance(), DB_NAME, null, 1);
+        super(AppBancoAfv.getInstance(), DB_PATH + DB_NAME, null, 1);
 //        this.myContext = myContext;
     }
 
