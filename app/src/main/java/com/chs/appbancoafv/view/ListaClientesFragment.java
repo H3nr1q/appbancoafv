@@ -82,25 +82,24 @@ public class ListaClientesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DialogNewCliente dialogNewCliente = DialogNewCliente.newInstance();
-
-                /* 3 - Seta o ouvinte que irá escutar o dialog */
-                dialogNewCliente.setOnCriarNovoClienteListener(new DialogNewCliente.OnCriarNovoClienteListener() {
-                    @Override
-                    public void onCriarNovoCliente(Cliente cliente) {
-                        Toast.makeText(
-                                requireContext(),
-                                "TIPO PESSOA SELECIONADO: " + cliente.getTipoPessoa() ,
-                                Toast.LENGTH_SHORT
-                        ).show();
-
-                        Intent intent = new Intent(getActivity(), CadastroClienteActivity.class);
-                        intent.putExtra("tipoPessoa",cliente.getTipoPessoa());
-                        intent.putExtra("cgccpf", cliente.getCgccpf());
-                        startActivity(intent);
-                    }
-                });
-
                 dialogNewCliente.show(getActivity().getSupportFragmentManager(), null);
+
+//                /* 3 - Seta o ouvinte que irá escutar o dialog */
+//                dialogNewCliente.setOnCriarNovoClienteListener(new DialogNewCliente.OnCriarNovoClienteListener() {
+//                    @Override
+//                    public void onCriarNovoCliente(Cliente cliente) {
+////                        Toast.makeText(
+////                                requireContext(),
+////                                "TIPO PESSOA SELECIONADO: " + cliente.getTipoPessoa() ,
+////                                Toast.LENGTH_SHORT
+////                        ).show();
+//
+//                        Intent intent = new Intent(getActivity(), CadastroClienteActivity.class);
+//                        intent.putExtra("tipoPessoa",cliente.getTipoPessoa());
+//                        intent.putExtra("cgccpf", cliente.getCgccpf());
+//                        startActivity(intent);
+//                    }
+//                });
 
             }
         });

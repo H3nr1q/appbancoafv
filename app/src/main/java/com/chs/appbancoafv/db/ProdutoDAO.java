@@ -1,5 +1,6 @@
 package com.chs.appbancoafv.db;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.chs.appbancoafv.model.Produto;
@@ -36,6 +37,16 @@ public class ProdutoDAO extends DAO<Produto> {
 
     @Override
     public Produto searchContactById(int id) {
+        return null;
+    }
+
+    @Override
+    protected ContentValues bindValues(Produto produto) {
+        return null;
+    }
+
+    @Override
+    protected Produto bind(Cursor c) {
         return null;
     }
 

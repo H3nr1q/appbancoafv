@@ -17,6 +17,7 @@ public class Cliente implements Parcelable {
     private String bairro;
     private String codMunicipio;
     private String telefone;
+    private String fax;
     private String enderecoEntrega;
     private String numeroEntrega;
     private String complementoEntrega;
@@ -25,6 +26,7 @@ public class Cliente implements Parcelable {
     private String email;
     private String emailNf;
     private String tipoPessoa;
+    private String cep;
 
     public Cliente() {
 
@@ -123,6 +125,14 @@ public class Cliente implements Parcelable {
         this.telefone = telefone;
     }
 
+    public String getFax() {
+        return fax;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+
     public String getEnderecoEntrega() {
         return enderecoEntrega;
     }
@@ -187,6 +197,13 @@ public class Cliente implements Parcelable {
         this.tipoPessoa = tipoPessoa;
     }
 
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
 
     @Override
     public int describeContents() {
@@ -205,6 +222,7 @@ public class Cliente implements Parcelable {
         dest.writeString(bairro);
         dest.writeString(codMunicipio);
         dest.writeString(telefone);
+        dest.writeString(fax);
         dest.writeString(enderecoEntrega);
         dest.writeString(numeroEntrega);
         dest.writeString(complementoEntrega);
@@ -213,6 +231,7 @@ public class Cliente implements Parcelable {
         dest.writeString(email);
         dest.writeString(emailNf);
         dest.writeString(tipoPessoa);
+        dest.writeString(cep);
     }
 
     @Override

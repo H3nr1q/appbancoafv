@@ -28,7 +28,7 @@ public class DialogNewCliente extends DialogFragment implements View.OnClickList
     private TextInputLayout textInputLayoutCgccpf;
     private TextInputEditText textInputEditTextCgccpf;
     private TextWatcher cpfCnpjTextWatcher;
-    private OnCriarNovoClienteListener criarNovoClienteListener;
+    //private OnCriarNovoClienteListener criarNovoClienteListener;
 
     public DialogNewCliente() {
 
@@ -80,32 +80,36 @@ public class DialogNewCliente extends DialogFragment implements View.OnClickList
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-//                   Intent intent = new Intent(getActivity(), CadastroClienteActivity.class);
-//                    if (radioButtonJuridico.isChecked()) {
-//                        intent.putExtra("tipoPessoa", radioButtonJuridico.getTag().toString());
-//                        intent.putExtra("cgccpf", textInputLayoutCgccpf.getEditText().getText().toString());
-//                    } else if (radioButtonFisico.isChecked()) {
-//                        intent.putExtra("tipoPessoa", radioButtonFisico.getTag().toString());
-//                        intent.putExtra("cgccpf", textInputLayoutCgccpf.getEditText().getText().toString());
-//                    }
-//
+                   Intent intent = new Intent(getActivity(), CadastroClienteActivity.class);
+                    if (radioButtonJuridico.isChecked()) {
+                        intent.putExtra("tipoPessoa", radioButtonJuridico.getTag().toString());
+                        intent.putExtra("cgccpf", textInputLayoutCgccpf.getEditText().getText().toString());
+                    } else if (radioButtonFisico.isChecked()) {
+                        intent.putExtra("tipoPessoa", radioButtonFisico.getTag().toString());
+                        intent.putExtra("cgccpf", textInputLayoutCgccpf.getEditText().getText().toString());
+                    }
+
+                    //Alterei para não criar o objeto aqui e sim só definir no dialog o tipo de pessoa e recuperar a string do cnpj e cpf
 //                    Cliente cliente = new Cliente();
 //                    cliente.setCodigo(cliente.generateId());
 //                    intent.putExtra("codigo", cliente.generateId());
+                    startActivity(intent);
 
 
-                Cliente cliente = new Cliente();
-                cliente.setCodigo(cliente.generateId());
-                cliente.setCgccpf(textInputLayoutCgccpf.getEditText().getText().toString());
+//
+//                // Uma forma diferente de pegar os dados do dialog
+//                Cliente cliente = new Cliente();
+//                cliente.setCodigo(cliente.generateId());
+//                cliente.setCgccpf(textInputLayoutCgccpf.getEditText().getText().toString());
+//
+//                /* Logica para verificar qual foi a opção usada pelo usuário */
+//                cliente.setTipoPessoa(radioButtonJuridico.isChecked() ? "J" : "F");
+//
+//                /* 4 -  Envia para quem estiver ouvindo, no caso a "ListaClientesFragment".
+//                * configuração esta que foi feita no passo "3" */
+//                criarNovoClienteListener.onCriarNovoCliente(cliente);
 
-                /* Logica para verificar qual foi a opção usada pelo usuário */
-                cliente.setTipoPessoa(radioButtonJuridico.isChecked() ? "JURIDICA" : "FISICA");
 
-                /* 4 -  Envia para quem estiver ouvindo, no caso a "ListaClientesFragment".
-                * configuração esta que foi feita no passo "3" */
-                criarNovoClienteListener.onCriarNovoCliente(cliente);
-
-//                startActivity(intent);
             }
         });
 
@@ -169,14 +173,14 @@ public class DialogNewCliente extends DialogFragment implements View.OnClickList
 
     }
 
-    /* 2 - Cria o setter para ligar o listener do ouvinte. Como ser disse ao dialog
-    * quando quiser falar comigo, é assim que vou escutar */
-    public void setOnCriarNovoClienteListener(OnCriarNovoClienteListener listener) {
-        criarNovoClienteListener = listener;
-    }
-
-    /* 1 -  Define o ouvinte para o dialog */
-    interface OnCriarNovoClienteListener {
-        void onCriarNovoCliente(Cliente cliente);
-    }
+//    /* 2 - Cria o setter para ligar o listener do ouvinte. Como ser disse ao dialog
+//    * quando quiser falar comigo, é assim que vou escutar */
+//    public void setOnCriarNovoClienteListener(OnCriarNovoClienteListener listener) {
+//        criarNovoClienteListener = listener;
+//    }
+//
+//    /* 1 -  Define o ouvinte para o dialog */
+//    interface OnCriarNovoClienteListener {
+//        void onCriarNovoCliente(Cliente cliente);
+//    }
 }
